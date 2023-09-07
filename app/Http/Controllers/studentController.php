@@ -34,7 +34,10 @@ class studentController extends Controller
      */
     public function show(student $student)
     {
-        return new studentresource($student);
+         return new studentResource([
+           'data' => $student,
+           'success' => 200,
+       ]);
     }
 
     /**
@@ -43,7 +46,10 @@ class studentController extends Controller
     public function update(studentRequest $request, student $student)
     {
         $student->update($request->validated());
-        return new studentResource($student);
+         return new studentResource([
+           'data' => $student,
+           'success' => 200,
+       ]);
     }
 
     /**

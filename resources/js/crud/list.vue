@@ -27,7 +27,7 @@
                                         <td>{{ student.phone }}</td>
                                         <td>{{ student.gender }}</td>
                                         <td>
-                                            <a href=""  class="btn btn-success btn-sm me-2">Edit</a>
+                                            <router-link :to="{name:'student.edit', params: {id: student.id}}" href=""  class="btn btn-success btn-sm me-2">Edit</router-link>
                                             <a href="" @click.prevent="destroy(student.id)" class="btn btn-danger btn-sm">Delete</a>
                                         </td>
                                     </tr>
