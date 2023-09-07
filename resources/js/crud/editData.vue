@@ -8,7 +8,7 @@
                             <router-link :to="{ name: 'Table' }" class="btn btn-sm btn-info">All Data</router-link>
                         </h5>
                         <div class="card-body">
-                            <form @submit.prevent="storeData">
+                            <form @submit.prevent="updateData">
                                 <div class="mb-3 form-group">
                                     <label for="email">Email address</label>
                                     <input type="email" class="mb-3 form-control" v-model="form.email" id="email" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -66,13 +66,25 @@ export default {
     methods: {
         editData(){
             axios.get(`/api/students/${this.$route.params.id}`).then(res => {
-                console.log(res.data.data);
                 if(res.data.success == 200){
                     this.form = res.data.data
                 }else{
 
                 }
             }).catch(err => {
+                this.error = err.response.data.error
+            })
+        },
+
+        updateData(){
+            axios.put(`/api/students/${this.$route.params.id}`, this.form).then(res =>{
+                if(res.data.success == 200){
+                    this.form = ''
+                    this.error = ''
+
+                    this.$router.push({name: 'Table'});
+                }
+            }).catch(err =>{
                 this.error = err.response.data.error
             })
         }
