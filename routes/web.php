@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 
 Route::view('/{any}', 'welcome')->where('any', '.*');
+
+Route::get('/login', function () {
+    return send_ms('User Unautheticated', false, 401);
+})->name('login');
