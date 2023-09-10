@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\adminController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/tets-admin-albab', function(){
-    return 'hellow world ';
+route::controller(adminController::class)->group(function(){
+    Route::post('/login', 'login');
+    Route::post('/register', 'register');
 });

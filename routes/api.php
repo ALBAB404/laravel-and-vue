@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\api\user\authController;
 use App\Http\Controllers\studentController;
-use App\Models\student;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
